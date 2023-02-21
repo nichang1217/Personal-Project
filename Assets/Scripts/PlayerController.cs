@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 5.0f;
+    private float speed = 1.0f;
     private Rigidbody playerRb;
+    private float xBound = 32.5f;
+    private float zBound = 15.73f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +20,33 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        float finalSpeed = speed;
 
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+            finalSpeed = 5;
+        }
+
+        playerRb.AddForce(Vector3.forward * finalSpeed * verticalInput, ForceMode.Impulse);
+        playerRb.AddForce(Vector3.right * finalSpeed * horizontalInput, ForceMode.Impulse);
+
+        // X boundary
+        if (transform.position.x < -xBound)
+        {
+            transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+        }
+
+        // X boundary
+        if (transform.position.x > xBound)
+        {
+            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
+        }
+
+        // Z boundary
+        if (transform.position.z > zBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
+        }
     }
 }
