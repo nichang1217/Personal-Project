@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 1.0f;
+    private float speed = 0.5f;
     private Rigidbody playerRb;
     private float xBound = 32.5f;
     private float zBound = 15.73f;
@@ -20,16 +20,10 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        float finalSpeed = speed;
+        
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-
-            finalSpeed = 5;
-        }
-
-        playerRb.AddForce(Vector3.forward * finalSpeed * verticalInput, ForceMode.Impulse);
-        playerRb.AddForce(Vector3.right * finalSpeed * horizontalInput, ForceMode.Impulse);
+        playerRb.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Impulse);
+        playerRb.AddForce(Vector3.right * speed * horizontalInput, ForceMode.Impulse);
 
         // X boundary
         if (transform.position.x < -xBound)
