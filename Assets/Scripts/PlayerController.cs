@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private float xBound = 32.5f;
     private float zBound = 15.73f;
+    public bool hasPowerup = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +26,35 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Impulse);
         playerRb.AddForce(Vector3.right * speed * horizontalInput, ForceMode.Impulse);
 
-        // X boundary
         if (transform.position.x < -xBound)
         {
             transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
         }
 
-        // X boundary
         if (transform.position.x > xBound)
         {
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
 
-        // Z boundary
         if (transform.position.z > zBound)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Powerup"))
+        {
+            hasPowerup = true;
+            Destroy(other.gameObject);
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(15);
+        hasPowerup = false;
     }
 }

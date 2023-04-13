@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   greekPrefabs:
-  - {fileID: 1675487488, guid: 0e8a48316c7f243948a75f0fca931274, type: 3}
+  - {fileID: 5903408081987157596, guid: c1e086a6793974285b0770115ef41245, type: 3}
   - {fileID: 7715243903722317844, guid: 00af55c71cda0458a8d184bb11cb4e9a, type: 3}
   - {fileID: 2299953858202961081, guid: d346fadeef1fc4280b1848fbd30e81f5, type: 3}
   - {fileID: 4520365682144577287, guid: 1304be4e88e394abd8a7a74effb984d3, type: 3}
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca444e957b8249b3abe945571b5df88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.07
+  speed: 0.1
 --- !u!54 &743205002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &963194225
 GameObject:

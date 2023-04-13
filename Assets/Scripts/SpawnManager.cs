@@ -12,16 +12,13 @@ public class SpawnManager : MonoBehaviour
     private float StartDelay = 3;
     private float greekSpawnInterval = 7;
     private float powerupSpawnRangeX = 30;
-    private float powerupSpawnRangeZ1 = -3;
-    private float powerupSpawnRangeZ2 = 13;
-    private float powerupSpawnInterval = 30;
     
     
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnRandomGreek", StartDelay, greekSpawnInterval);
-        InvokeRepeating("SpawnRandomPowerup", StartDelay * 2, powerupSpawnInterval);
+        SpawnRandomPowerup();
     }
 
     // Update is called once per frame
@@ -40,7 +37,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnRandomPowerup()
     {
         int powerupIndex = Random.Range(0, powerupPrefabs.Length);
-            Vector3 powerupSpawnPos = new Vector3(Random.Range(-powerupSpawnRangeX, powerupSpawnRangeX), 1.05f, Random.Range(powerupSpawnRangeZ1, powerupSpawnRangeZ2));
+            Vector3 powerupSpawnPos = new Vector3(Random.Range(-powerupSpawnRangeX, powerupSpawnRangeX), 0.9f, Random.Range(-3, 13));
 
             Instantiate(powerupPrefabs[powerupIndex], powerupSpawnPos, powerupPrefabs[0].transform.rotation);
     }
