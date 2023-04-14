@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
     private float xBound = 32.5f;
     private float zBound = 15.73f;
     public bool hasPowerup = false;
+    public SpawnManager spawnManager;
+    public GameObject projectilePrefab;
+    public bool hasSpear = true;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && hasSpear)
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,5 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         hasPowerup = false;
+         int i = Random.Range(0, spawnManager.powerupPrefabs.Length);
+        Instantiate(spawnManager.powerupPrefabs[i], spawnManager.GenerateSpawnPosition(), spawnManager.powerupPrefabs[i].transform.rotation);
     }
 }

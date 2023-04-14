@@ -261,7 +261,6 @@ MonoBehaviour:
   - {fileID: 3839635753102629719, guid: a17effb215b9e4211b58fe431d56f42a, type: 3}
   - {fileID: 1506130162296482376, guid: a3202a26da4e7479c8f68869400497c6, type: 3}
   - {fileID: 687451823886130471, guid: 38f5a45a7f88e4514a2ba62e2321e184, type: 3}
-  projectilePrefab: {fileID: 0}
 --- !u!4 &696710079
 Transform:
   m_ObjectHideFlags: 0
@@ -483,6 +482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  hasPowerup: 0
+  spawnManager: {fileID: 696710078}
+  projectilePrefab: {fileID: 6841786619218095897, guid: 93d0b94ab7642854a97657c2f4ae5c63, type: 3}
+  hasSpear: 1
 --- !u!54 &743205002
 Rigidbody:
   m_ObjectHideFlags: 0
